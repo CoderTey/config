@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./nvidia.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -26,10 +27,6 @@
     LC_TIME = "de_DE.UTF-8";
   };
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics.enable = true;
-  hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.open = false;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   programs.hyprland.enable = true;
@@ -85,6 +82,10 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
     vim
     alacritty
     ranger
+    lshw
+    xorg.xorgserver
+    xorg.xinit
+    xorg.xrandr
     dwl
     gcc
     binutils
