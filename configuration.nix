@@ -33,7 +33,6 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   programs.hyprland.enable = true;
-  programs.dwl.enable = true;
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -66,7 +65,8 @@
   # ====== Fish shell ======
   programs.fish.enable = true;
   services.flatpak.enable = true;
-
+  #====== Flakes =====
+nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
     hyprshot
@@ -74,15 +74,18 @@
     neofetch
     nwg-look
     gnumake
+    sxhkd
     gdb
     hyprlock
     hyprpaper
     waybar
     neovim
     helix
+    tokyo-night-gtk
     vim
     alacritty
     ranger
+    dwl
     gcc
     binutils
     git
@@ -90,6 +93,7 @@
     spotify
     discord
     wofi
+    dracula-icon-theme
     xfce.thunar
     fish
     tmux
@@ -113,6 +117,8 @@
     wget
     curl
     wl-clipboard
+    foot
+    wmenu
     fishPlugins.done
     fishPlugins.fzf-fish
     fishPlugins.forgit
@@ -130,12 +136,12 @@
     lua-language-server
     tree
     lua54Packages.luarocks-nix
-    cargo
+    cargo    
     libreoffice
     lmstudio
-    lldb_21
     lazygit
-    linuxKernel.packages.linux_6_1.digimend
+    st
+    dmenu
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   system.stateVersion = "25.05";
