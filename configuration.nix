@@ -6,120 +6,143 @@
     ./nvidia.nix
   ];
 
+  # ====== Boot loader ======
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # ====== Networking ======
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  # ====== Time & Locale ======
   time.timeZone = "Europe/Berlin";
-
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "de_DE.UTF-8";
+    LC_ADDRESS        = "de_DE.UTF-8";
     LC_IDENTIFICATION = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
-    LC_MONETARY = "de_DE.UTF-8";
-    LC_NAME = "de_DE.UTF-8";
-    LC_NUMERIC = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_TELEPHONE = "de_DE.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
+    LC_MEASUREMENT    = "de_DE.UTF-8";
+    LC_MONETARY       = "de_DE.UTF-8";
+    LC_NAME           = "de_DE.UTF-8";
+    LC_NUMERIC        = "de_DE.UTF-8";
+    LC_PAPER          = "de_DE.UTF-8";
+    LC_TELEPHONE      = "de_DE.UTF-8";
+    LC_TIME           = "de_DE.UTF-8";
   };
+
+  # ====== Xserver & Desktop ======
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  programs.hyprland.enable = true;
+  services.xserver.windowManager.qtile.enable = true;
   services.xserver.xkb = {
-    layout = "us";
+    layout  = "us";
     variant = "";
   };
 
+  # ====== Users ======
+  users.users.tey = {
+    isNormalUser  = true;
+    description   = "Tey";
+    extraGroups   = [ "networkmanager" "wheel" ];
+    shell         = pkgs.fish;
+    packages      = with pkgs; [ ];
+  };
+
+  # ====== Programs ======
   programs.nix-ld.enable = true;
+  programs.firefox.enable = true;
+  programs.fish.enable = true;
 
+  # ====== Services ======
   services.printing.enable = true;
-
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.users.tey = {
-    isNormalUser = true;
-    description = "Tey";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
-    shell = pkgs.fish; 
-  };
-
-  programs.firefox.enable = true;
-  nixpkgs.config.allowUnfree = true;
-
-  # ====== Fish shell ======
-  programs.fish.enable = true;
+  services.pipewire.enable = true;
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
   services.flatpak.enable = true;
-  #====== Flakes =====
-nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # ====== Nix settings ======
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # ====== Environment packages ======
   environment.systemPackages = with pkgs; [
-    hyprshot
-    pavucontrol
-    neofetch
-    nwg-look
+    coreutils
     gnumake
-    sxhkd
-    gdb
-    hyprlock
-    hyprpaper
-    waybar
-    neovim
-    helix
-    tokyo-night-gtk
-    vim
-    alacritty
-    ranger
-    lshw
+    gcc
+    binutils
+    git
+    htop
+    ncdu
+    wget
+    curl
+    unzip
+    tree
+    pkgs.home-manager
     xorg.xorgserver
     xorg.xinit
     xorg.xrandr
     dwl
-    gcc
-    binutils
-    git
+    flatpak
+    hyprland
+    hyprlock
+    hyprpaper
+    waybar
+    sxhkd
+    rofi
+    firefox
     zoom-us
     spotify
     discord
-    wofi
+    obsidian
+    libreoffice
+    telegram-desktop
+    nwg-look
     dracula-icon-theme
     xfce.thunar
-    fish
+    pavucontrol
+    alacritty
+    foot
+    wmenu
     tmux
     zellij
-    dwl
-    cmake
-    clang-tools
+    fish
+    neovim
+    helix
+    vim
     clang
-    htop
-    ncdu
-    lf
-    fzf
-    ripgrep
+    clang-tools
+    cmake
     rust-analyzer
-    zoxide
     rustup
     clippy
     rustfmt
     rustc
-    bat
-    wget
-    curl
+    zig
+    gh
+    nodejs_24
+    python314
+    lua-language-server
+    lua54Packages.luarocks-nix
+    cargo
+    fzf
+    ripgrep
+    zoxide
+    neofetch
+    fastfetch
+    lf
+    picom
+    scrot
     wl-clipboard
-    foot
-    wmenu
+    lazygit
+    st
+    dmenu
+    alsa-tools
+    alsa-utils
+    tree-sitter
+    tree-sitter-grammars.tree-sitter-nix
     fishPlugins.done
     fishPlugins.fzf-fish
     fishPlugins.forgit
@@ -127,24 +150,11 @@ nix.settings.experimental-features = ["nix-command" "flakes"];
     fishPlugins.grc
     grc
     nixd
-    obsidian
-    tree-sitter
-    tree-sitter-grammars.tree-sitter-nix
-    nodejs_24
-    python314
-    telegram-desktop
-    unzip
-    lua-language-server
-    tree
-    lua54Packages.luarocks-nix
-    cargo    
-    libreoffice
-    lmstudio
-    lazygit
-    st
-    dmenu
+    ghostty
+    tokyo-night-gtk
   ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
+  # ====== System version ======
   system.stateVersion = "25.05";
 }
 
