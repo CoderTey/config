@@ -5,6 +5,7 @@
       enable = true;
       name = "nord";
       style = "dark";
+      transparent = true;
     };
 
     statusline.lualine.enable = true;
@@ -18,6 +19,8 @@
     formatter.conform-nvim.setupOpts.format_after_save.enable = true;
     ui.nvim-highlight-colors.enable = true;
     visuals.nvim-web-devicons.enable = true;
+    utility.motion.leap.enable = true;
+    visuals.indent-blankline.enable = true;
 
     keymaps = [
       {
@@ -53,6 +56,8 @@
 
       nix.enable = true;
       rust.enable = true;
+      go.enable = true;
+      clang.enable = true;
     };
   };
 }
