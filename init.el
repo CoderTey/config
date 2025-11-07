@@ -4,6 +4,7 @@
 
 ;;; Code:
 
+;; -*- lexical-binding: t; -*-
 (require 'package)
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
@@ -19,6 +20,7 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
+;; Evil mode
 (ensure-package 'evil)
 (require 'evil)
 (evil-mode 1)
@@ -36,6 +38,7 @@
 
 (set-face-attribute 'default nil :height 140)
 
+;; Undo-tree
 (ensure-package 'undo-tree)
 (require 'undo-tree)
 (global-undo-tree-mode 1)
@@ -64,6 +67,11 @@
 (ensure-package 'magit)
 (require 'magit)
 
+;; Git
+(ensure-package 'magit)
+(require 'magit)
+
+;; Cargo Run / Test
 (defun my-rust-run ()
   (interactive)
   (save-buffer)
@@ -74,6 +82,7 @@
   (compile "cargo test"))
 (global-set-key (kbd "<f5>") 'my-rust-run)
 (global-set-key (kbd "<f6>") 'my-rust-test)
+
 
 (ensure-package 'projectile)
 (require 'projectile)
@@ -104,3 +113,14 @@
 
 
 ;; init.el ends here
+(ensure-package 'dap-mode)
+(require 'dap-mode)
+(require 'dap-gdb-lldb)
+(dap-auto-configure-mode 1)
+(setq dap-auto-show-output t)
+
+(setq browse-url-browser-function 'browse-url-firefox)
+(custom-set-variables
+ '(package-selected-packages
+   '(nord-theme company eglot magit undo-tree projectile dap-mode cmake-mode rust-mode rustic evil flycheck)))
+(custom-set-faces)
