@@ -1,6 +1,6 @@
 ;;; init.el --- Emacs configuration -*- lexical-binding: t; -*-
 ;;; Commentary:
-;;; A clean, modern Emacs setup for Rust and Nix development
+;;; A clean, modern Emacs setup for Rust, Nix, and Lua development
 ;;; Code:
 
 ;; ============================================================================
@@ -28,6 +28,11 @@
   "Install PKG if not already installed."
   (unless (package-installed-p pkg)
     (package-install pkg)))
+
+(ensure-package 'use-package)
+(require 'use-package)
+(setq use-package-always-ensure t)
+
 
 ;; ============================================================================
 ;; VISUAL SETTINGS
@@ -57,6 +62,7 @@
 (ensure-package 'evil)
 (require 'evil)
 (evil-mode 1)
+
 
 ;; Undo system for Evil
 (ensure-package 'undo-tree)
@@ -141,6 +147,25 @@
 ;;             (add-hook 'before-save-hook 'eglot-format-buffer nil t)))
 
 ;; ============================================================================
+;; LUA DEVELOPMENT
+;; ============================================================================
+
+(ensure-package 'lua-mode)
+(require 'lua-mode)
+(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
+
+;; Use lua-language-server for LSP
+;; Provides: completion, diagnostics, go-to-definition, hover docs
+;; Install: Download from https://github.com/LuaLS/lua-language-server/releases
+;;          Or via package manager (e.g., nix-env -iA nixpkgs.lua-language-server)
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(lua-mode . ("lua-language-server"))))
+
+;; Enable LSP for Lua files
+(add-hook 'lua-mode-hook #'eglot-ensure)
+
+;; ============================================================================
 ;; PROJECT MANAGEMENT
 ;; ============================================================================
 
@@ -153,6 +178,21 @@
 ;; Magit - Git interface
 (ensure-package 'magit)
 (require 'magit)
+
+;; ============================================================================
+;; TERMINAL EMULATOR
+;; ============================================================================
+
+;; vterm - fast terminal emulator
+;; Requires: cmake, libtool, libvterm
+(ensure-package 'vterm)
+(require 'vterm)
+
+;; Keybinding to open vterm
+(global-set-key (kbd "C-c t") 'vterm)
+
+;; vterm settings
+(setq vterm-max-scrollback 10000)  ; Scrollback buffer size
 
 ;; ============================================================================
 ;; SYSTEM INTEGRATION
@@ -191,10 +231,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(cmake-mode company dap-mode dream-theme evil-collection flycheck
-		magit nix-mode nord-theme nordic-night-theme projectile rustic
-		shades-of-purple-theme undo-tree xclip)))
+ '(package-selected-packages nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
