@@ -1,0 +1,7 @@
+(undo-tree-save-format-version . 1)
+"10adb2c6476282191474de4cb64dd9db13a56bf5"
+[nil nil nil nil (26893 56694 15899 499000) 0 nil]
+([nil nil (("  services.xwayland.enable = true;" . 27) (undo-tree-id7 . -34) (undo-tree-id8 . -34) (undo-tree-id9 . -33) (t 26893 56440 210162 256000)) nil (26893 56694 15898 435000) 0 nil])
+([nil current (("
+" . -26) (undo-tree-id0 . -1) (undo-tree-id1 . -1) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (undo-tree-id5 . -1) (undo-tree-id6 . -1) 27) nil (26893 56694 15893 937000) 0 nil])
+nil

@@ -63,8 +63,6 @@
       libxkbcommon
       wayland-protocols
       sway
-      libtool
-      libvterm
       dwl
       hyprland
       hyprlock

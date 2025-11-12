@@ -28,6 +28,7 @@
     ./desktop/oxwm.nix
     ./desktop/picom.nix
     ./desktop/xmonad.nix
+    ./desktop/kde.nix
   ];
 
   

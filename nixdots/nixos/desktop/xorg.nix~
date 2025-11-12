@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  services.xwayland.enable = true;
   services.xserver = {
     enable = true;
     autoRepeatDelay = 200;

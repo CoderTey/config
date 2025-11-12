@@ -1,0 +1,370 @@
+(undo-tree-save-format-version . 1)
+"d61a0bc5dd442273ef4efe1a89fc067af845a57f"
+[nil nil nil nil (26894 20032 441088 267000) 0 nil]
+([nil nil ((#("{ config, pkgs, ... }:
+
+{
+  # Noctalia Shell configuration for NixOS/Home Manager
+  # Based on Nordic theme
+
+  xdg.configFile.\"noctalia-shell/config.json\".text = builtins.toJSON {
+    appLauncher = {
+      backgroundOpacity = 1;
+      customLaunchPrefix = \"\";
+      customLaunchPrefixEnabled = false;
+      enableClipboardHistory = false;
+      pinnedExecs = [ ];
+      position = \"center\";
+      sortByMostUsed = true;
+      terminalCommand = \"ghostty -e\";
+      useApp2Unit = false;
+    };
+
+    audio = {
+      cavaFrameRate = 60;
+      mprisBlacklist = [ ];
+      preferredPlayer = \"\";
+      visualizerType = \"linear\";
+      volumeOverdrive = false;
+      volumeStep = 5;
+    };
+
+    bar = {
+      backgroundOpacity = 1;
+      density = \"default\";
+      floating = false;
+      marginHorizontal = 0.25;
+      marginVertical = 0.25;
+      monitors = [ ];
+      position = \"top\";
+      showCapsule = true;
+      widgets = {
+        center = [
+          {
+            characterCount = 2;
+            hideUnoccupied = false;
+            id = \"Workspace\";
+            labelMode = \"name\";
+          }
+        ];
+        left = [
+          {
+            id = \"SystemMonitor\";
+            showCpuTemp = true;
+            showCpuUsage = true;
+            showDiskUsage = false;
+            showMemoryAsPercent = false;
+            showMemoryUsage = true;
+            showNetworkStats = false;
+          }
+          {
+            colorizeIcons = false;
+            hideMode = \"hidden\";
+            id = \"ActiveWindow\";
+            maxWidth = 145;
+            scrollingMode = \"hover\";
+            showIcon = true;
+            useFixedWidth = false;
+          }
+          {
+            hideMode = \"hidden\";
+            id = \"MediaMini\";
+            maxWidth = 145;
+            scrollingMode = \"hover\";
+            showAlbumArt = false;
+            showVisualizer = false;
+            useFixedWidth = false;
+            visualizerType = \"linear\";
+          }
+        ];
+        right = [
+          { id = \"ScreenRecorder\"; }
+          {
+            blacklist = [ ];
+            colorizeIcons = false;
+            id = \"Tray\";
+          }
+          {
+            hideWhenZero = true;
+            id = \"NotificationHistory\";
+            showUnreadBadge = true;
+          }
+          {
+            displayMode = \"onhover\";
+            id = \"Battery\";
+            warningThreshold = 30;
+          }
+          {
+            displayMode = \"onhover\";
+            id = \"Volume\";
+          }
+          {
+            displayMode = \"onhover\";
+            id = \"Brightness\";
+          }
+          {
+            customFont = \"\";
+            formatHorizontal = \"HH:mm ddd, MMM dd\";
+            formatVertical = \"HH mm - dd MM\";
+            id = \"Clock\";
+            useCustomFont = false;
+            usePrimaryColor = true;
+          }
+          {
+            customIconPath = \"\";
+            icon = \"noctalia\";
+            id = \"ControlCenter\";
+            useDistroLogo = false;
+          }
+        ];
+      };
+    };
+
+    battery = {
+      chargingMode = 0;
+    };
+
+    brightness = {
+      brightnessStep = 5;
+      enforceMinimum = true;
+    };
+
+    colorSchemes = {
+      darkMode = true;
+      generateTemplatesForPredefined = true;
+      manualSunrise = \"06:30\";
+      manualSunset = \"18:30\";
+      matugenSchemeType = \"Nord\";
+      predefinedScheme = \"Nord\";
+      schedulingMode = \"off\";
+      useWallpaperColors = true;
+    };
+
+    controlCenter = {
+      cards = [
+        {
+          enabled = true;
+          id = \"profile-card\";
+        }
+        {
+          enabled = true;
+          id = \"shortcuts-card\";
+        }
+        {
+          enabled = true;
+          id = \"audio-card\";
+        }
+        {
+          enabled = true;
+          id = \"weather-card\";
+        }
+        {
+          enabled = true;
+          id = \"media-sysmon-card\";
+        }
+      ];
+      position = \"close_to_bar_button\";
+      shortcuts = {
+        left = [
+          { id = \"WiFi\"; }
+          { id = \"ScreenRecorder\"; }
+          { id = \"WallpaperSelector\"; }
+        ];
+        right = [
+          { id = \"Notifications\"; }
+          { id = \"PowerProfile\"; }
+          { id = \"KeepAwake\"; }
+          { id = \"NightLight\"; }
+        ];
+      };
+    };
+
+    dock = {
+      backgroundOpacity = 1;
+      colorizeIcons = false;
+      displayMode = \"always_visible\";
+      enabled = false;
+      floatingRatio = 1;
+      monitors = [ ];
+      onlySameOutput = true;
+      pinnedApps = [ ];
+      size = 1;
+    };
+
+    general = {
+      animationDisabled = false;
+      animationSpeed = 1;
+      avatarImage = \"${config.home.homeDirectory}/.face\";
+      compactLockScreen = false;
+      forceBlackScreenCorners = false;
+      language = \"\";
+      lockOnSuspend = true;
+      radiusRatio = 1;
+      scaleRatio = 1;
+      screenRadiusRatio = 1;
+      showScreenCorners = false;
+    };
+
+    hooks = {
+      darkModeChange = \"\";
+      enabled = false;
+      wallpaperChange = \"\";
+    };
+
+    location = {
+      analogClockInCalendar = false;
+      firstDayOfWeek = -1;
+      name = \"Mannheim\";
+      showCalendarEvents = true;
+      showCalendarWeather = true;
+      showWeekNumberInCalendar = false;
+      use12hourFormat = false;
+      useFahrenheit = false;
+      weatherEnabled = true;
+    };
+
+    network = {
+      wifiEnabled = true;
+    };
+
+    nightLight = {
+      autoSchedule = true;
+      dayTemp = \"6500\";
+      enabled = false;
+      forced = false;
+      manualSunrise = \"06:30\";
+      manualSunset = \"18:30\";
+      nightTemp = \"4000\";
+    };
+
+    notifications = {
+      backgroundOpacity = 1;
+      criticalUrgencyDuration = 15;
+      doNotDisturb = false;
+      location = \"top_right\";
+      lowUrgencyDuration = 3;
+      monitors = [ ];
+      normalUrgencyDuration = 8;
+      overlayLayer = true;
+      respectExpireTimeout = false;
+    };
+
+    osd = {
+      autoHideMs = 2000;
+      enabled = true;
+      location = \"top_right\";
+      monitors = [ ];
+      overlayLayer = true;
+    };
+
+    screenRecorder = {
+      audioCodec = \"opus\";
+      audioSource = \"default_output\";
+      colorRange = \"limited\";
+      directory = \"${config.home.homeDirectory}/Videos\";
+      frameRate = 60;
+      quality = \"very_high\";
+      showCursor = true;
+      videoCodec = \"h264\";
+      videoSource = \"portal\";
+    };
+
+    settingsVersion = 16;
+    setupCompleted = true;
+
+    templates = {
+      alacritty = false;
+      code = false;
+      discord = false;
+      discord_armcord = false;
+      discord_dorion = false;
+      discord_equibop = false;
+      discord_lightcord = false;
+      discord_vesktop = false;
+      discord_webcord = false;
+      enableUserTemplates = false;
+      foot = false;
+      fuzzel = false;
+      ghostty = false;
+      gtk = false;
+      kcolorscheme = false;
+      kitty = false;
+      pywalfox = false;
+      qt = false;
+      vicinae = false;
+      walker = false;
+    };
+
+    ui = {
+      fontDefault = \"JetBrainsMono Nerd Font Propo\";
+      fontDefaultScale = 1;
+      fontFixed = \"DejaVu Sans Mono\";
+      fontFixedScale = 1;
+      panelsAttachedToBar = true;
+      panelsOverlayLayer = true;
+      tooltipsEnabled = true;
+    };
+
+    wallpaper = {
+      defaultWallpaper = \"/home/tey/Pictures/1.png\";
+      directory = \"${config.home.homeDirectory}/Pictures\";
+      enableMultiMonitorDirectories = false;
+      enabled = true;
+      fillColor = \"#242933\";
+      fillMode = \"crop\";
+      monitors = [
+        {
+          directory = \"${config.home.homeDirectory}/Pictures\";
+          name = \"eDP-1\";
+          wallpaper = \"/home/tey/Pictures/1.png\";
+        }
+      ];
+      randomEnabled = true;
+      randomIntervalSec = 300;
+      recursiveSearch = true;
+      setWallpaperOnAllMonitors = true;
+      transitionDuration = 1500;
+      transitionEdgeSmoothness = 0.05;
+      transitionType = \"random\";
+    };
+  };
+
+  # Nordic color scheme
+  xdg.configFile.\"noctalia-shell/colors.json\".text = builtins.toJSON {
+    mError = \"#bf616a\";
+    mOnError = \"#242933\";
+    mOnPrimary = \"#242933\";
+    mOnSecondary = \"#242933\";
+    mOnSurface = \"#d8dee9\";
+    mOnSurfaceVariant = \"#8fbcbb\";
+    mOnTertiary = \"#242933\";
+    mOutline = \"#3b4252\";
+    mPrimary = \"#8fbcbb\";
+    mSecondary = \"#b48ead\";
+    mShadow = \"#191d24\";
+    mSurface = \"#2e3440\";
+    mSurfaceVariant = \"#3b4252\";
+    mTertiary = \"#a3be8c\";
+  };
+
+  # Required packages
+
+  # Ensure directories exist
+  home.file.\"Pictures/.keep\".text = \"\";
+  home.file.\"Videos/.keep\".text = \"\";
+}
+" 0 28 (fontified t) 28 82 (face font-lock-comment-face fontified t) 82 84 (fontified t) 84 108 (face font-lock-comment-face fontified t) 108 126 (fontified t) 126 127 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 127 153 (face font-lock-string-face fontified t) 153 154 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 154 155 (fontified t) 155 159 (face nix-attribute-face fontified t) 159 184 (fontified t) 184 195 (face nix-attribute-face fontified t) 195 206 (fontified t) 206 223 (face nix-attribute-face fontified t) 223 235 (fontified t) 235 253 (face nix-attribute-face fontified t) 253 256 (fontified t) 256 257 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 257 258 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 258 266 (fontified t) 266 291 (face nix-attribute-face fontified t) 291 294 (fontified t) 294 299 (face nix-builtin-face fontified t) 299 307 (fontified t) 307 329 (face nix-attribute-face fontified t) 329 332 (fontified t) 332 337 (face nix-builtin-face fontified t) 337 345 (fontified t) 345 356 (face nix-attribute-face fontified t) 356 370 (fontified t) 370 378 (face nix-attribute-face fontified t) 378 381 (fontified t) 381 382 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 382 388 (face font-lock-string-face fontified t) 388 389 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 389 397 (fontified t) 397 411 (face nix-attribute-face fontified t) 411 414 (fontified t) 414 418 (face nix-builtin-face fontified t) 418 426 (fontified t) 426 441 (face nix-attribute-face fontified t) 441 444 (fontified t) 444 445 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 445 455 (face font-lock-string-face fontified t) 455 456 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 456 464 (fontified t) 464 475 (face nix-attribute-face fontified t) 475 478 (fontified t) 478 483 (face nix-builtin-face fontified t) 483 497 (fontified t) 497 502 (face nix-attribute-face fontified t) 502 513 (fontified t) 513 526 (face nix-attribute-face fontified t) 526 539 (fontified t) 539 553 (face nix-attribute-face fontified t) 553 567 (fontified t) 567 582 (face nix-attribute-face fontified t) 582 585 (fontified t) 585 586 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 586 587 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 587 595 (fontified t) 595 609 (face nix-attribute-face fontified t) 609 612 (fontified t) 612 613 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 613 619 (face font-lock-string-face fontified t) 619 620 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 620 628 (fontified t) 628 643 (face nix-attribute-face fontified t) 643 646 (fontified t) 646 651 (face nix-builtin-face fontified t) 651 659 (fontified t) 659 669 (face nix-attribute-face fontified t) 669 687 (fontified t) 687 690 (face nix-attribute-face fontified t) 690 701 (fontified t) 701 718 (face nix-attribute-face fontified t) 718 730 (fontified t) 730 737 (face nix-attribute-face fontified t) 737 740 (fontified t) 740 741 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 741 748 (face font-lock-string-face fontified t) 748 749 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 749 757 (fontified t) 757 765 (face nix-attribute-face fontified t) 765 768 (fontified t) 768 773 (face nix-builtin-face fontified t) 773 781 (fontified t) 781 797 (face nix-attribute-face fontified t) 797 812 (fontified t) 812 826 (face nix-attribute-face fontified t) 826 841 (fontified t) 841 849 (face nix-attribute-face fontified t) 849 863 (fontified t) 863 871 (face nix-attribute-face fontified t) 871 874 (fontified t) 874 875 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 875 878 (face font-lock-string-face fontified t) 878 879 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 879 887 (fontified t) 887 898 (face nix-attribute-face fontified t) 898 901 (fontified t) 901 905 (face nix-builtin-face fontified t) 905 913 (fontified t) 913 920 (face nix-attribute-face fontified t) 920 933 (fontified t) 933 939 (face nix-attribute-face fontified t) 939 968 (fontified t) 968 982 (face nix-attribute-face fontified t) 982 1000 (fontified t) 1000 1014 (face nix-attribute-face fontified t) 1014 1017 (fontified t) 1017 1022 (face nix-builtin-face fontified t) 1022 1036 (fontified t) 1036 1038 (face nix-attribute-face fontified t) 1038 1041 (fontified t) 1041 1042 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1042 1051 (face font-lock-string-face fontified t) 1051 1052 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1052 1066 (fontified t) 1066 1075 (face nix-attribute-face fontified t) 1075 1078 (fontified t) 1078 1079 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1079 1083 (face font-lock-string-face fontified t) 1083 1084 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1084 1117 (fontified t) 1117 1121 (face nix-attribute-face fontified t) 1121 1150 (fontified t) 1150 1152 (face nix-attribute-face fontified t) 1152 1155 (fontified t) 1155 1156 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1156 1169 (face font-lock-string-face fontified t) 1169 1170 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1170 1184 (fontified t) 1184 1195 (face nix-attribute-face fontified t) 1195 1198 (fontified t) 1198 1202 (face nix-builtin-face fontified t) 1202 1216 (fontified t) 1216 1228 (face nix-attribute-face fontified t) 1228 1231 (fontified t) 1231 1235 (face nix-builtin-face fontified t) 1235 1249 (fontified t) 1249 1262 (face nix-attribute-face fontified t) 1262 1265 (fontified t) 1265 1270 (face nix-builtin-face fontified t) 1270 1284 (fontified t) 1284 1303 (face nix-attribute-face fontified t) 1303 1306 (fontified t) 1306 1311 (face nix-builtin-face fontified t) 1311 1325 (fontified t) 1325 1340 (face nix-attribute-face fontified t) 1340 1343 (fontified t) 1343 1347 (face nix-builtin-face fontified t) 1347 1361 (fontified t) 1361 1377 (face nix-attribute-face fontified t) 1377 1380 (fontified t) 1380 1385 (face nix-builtin-face fontified t) 1385 1423 (fontified t) 1423 1436 (face nix-attribute-face fontified t) 1436 1439 (fontified t) 1439 1444 (face nix-builtin-face fontified t) 1444 1458 (fontified t) 1458 1466 (face nix-attribute-face fontified t) 1466 1469 (fontified t) 1469 1470 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1470 1476 (face font-lock-string-face fontified t) 1476 1477 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1477 1491 (fontified t) 1491 1493 (face nix-attribute-face fontified t) 1493 1496 (fontified t) 1496 1497 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 1497 1500 (face font-lock-string-face fontified t) 1500 1509 (face font-lock-string-face fontified nil) 1509 1510 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified nil) 1510 1568 (fontified nil) 1568 1569 (nix-string-type 34 syntax-table (15) fontified nil) 1569 1574 (fontified nil) 1574 1575 (nix-string-type 34 syntax-table (15) fontified nil) 1575 1688 (fontified nil) 1688 1689 (nix-string-type 34 syntax-table (15) fontified nil) 1689 1695 (fontified nil) 1695 1696 (nix-string-type 34 syntax-table (15) fontified nil) 1696 1715 (fontified nil) 1715 1716 (nix-string-type 34 syntax-table (15) fontified nil) 1716 1725 (fontified nil) 1725 1726 (nix-string-type 34 syntax-table (15) fontified nil) 1726 1784 (fontified nil) 1784 1785 (nix-string-type 34 syntax-table (15) fontified nil) 1785 1790 (fontified nil) 1790 1791 (nix-string-type 34 syntax-table (15) fontified nil) 1791 1927 (fontified nil) 1927 1928 (nix-string-type 34 syntax-table (15) fontified nil) 1928 1934 (fontified nil) 1934 1935 (nix-string-type 34 syntax-table (15) fontified nil) 1935 1995 (fontified nil) 1995 1996 (nix-string-type 34 syntax-table (15) fontified nil) 1996 2010 (fontified nil) 2010 2011 (nix-string-type 34 syntax-table (15) fontified nil) 2011 2108 (fontified nil) 2108 2109 (nix-string-type 34 syntax-table (15) fontified nil) 2109 2113 (fontified nil) 2113 2114 (nix-string-type 34 syntax-table (15) fontified nil) 2114 2190 (fontified nil) 2190 2191 (nix-string-type 34 syntax-table (15) fontified nil) 2191 2210 (fontified nil) 2210 2211 (nix-string-type 34 syntax-table (15) fontified nil) 2211 2299 (fontified nil) 2299 2300 (nix-string-type 34 syntax-table (15) fontified nil) 2300 2307 (fontified nil) 2307 2308 (nix-string-type 34 syntax-table (15) fontified nil) 2308 2327 (fontified nil) 2327 2328 (nix-string-type 34 syntax-table (15) fontified nil) 2328 2335 (fontified nil) 2335 2336 (nix-string-type 34 syntax-table (15) fontified nil) 2336 2423 (fontified nil) 2423 2424 (nix-string-type 34 syntax-table (15) fontified nil) 2424 2431 (fontified nil) 2431 2432 (nix-string-type 34 syntax-table (15) fontified nil) 2432 2451 (fontified nil) 2451 2452 (nix-string-type 34 syntax-table (15) fontified nil) 2452 2458 (fontified nil) 2458 2459 (nix-string-type 34 syntax-table (15) fontified nil) 2459 2511 (fontified nil) 2511 2512 (nix-string-type 34 syntax-table (15) fontified nil) 2512 2519 (fontified nil) 2519 2520 (nix-string-type 34 syntax-table (15) fontified nil) 2520 2539 (fontified nil) 2539 2540 (nix-string-type 34 syntax-table (15) fontified nil) 2540 2550 (fontified nil) 2550 2551 (nix-string-type 34 syntax-table (15) fontified nil) 2551 2602 (fontified nil) 2602 2603 (nix-string-type 34 syntax-table (15) fontified nil) 2603 2604 (nix-string-type 34 syntax-table (15) fontified nil) 2604 2637 (fontified nil) 2637 2638 (nix-string-type 34 syntax-table (15) fontified nil) 2638 2655 (fontified nil) 2655 2656 (nix-string-type 34 syntax-table (15) fontified nil) 2656 2687 (fontified nil) 2687 2688 (nix-string-type 34 syntax-table (15) fontified nil) 2688 2701 (fontified nil) 2701 2702 (nix-string-type 34 syntax-table (15) fontified nil) 2702 2721 (fontified nil) 2721 2722 (nix-string-type 34 syntax-table (15) fontified nil) 2722 2727 (fontified nil) 2727 2728 (nix-string-type 34 syntax-table (15) fontified nil) 2728 2854 (fontified nil) 2854 2855 (nix-string-type 34 syntax-table (15) fontified nil) 2855 2856 (nix-string-type 34 syntax-table (15) fontified nil) 2856 2877 (fontified nil) 2877 2878 (nix-string-type 34 syntax-table (15) fontified nil) 2878 2886 (fontified nil) 2886 2887 (nix-string-type 34 syntax-table (15) fontified nil) 2887 2906 (fontified nil) 2906 2907 (nix-string-type 34 syntax-table (15) fontified nil) 2907 2920 (fontified nil) 2920 2921 (nix-string-type 34 syntax-table (15) fontified nil) 2921 3239 (fontified nil) 3239 3240 (nix-string-type 34 syntax-table (15) fontified nil) 3240 3245 (fontified nil) 3245 3246 (nix-string-type 34 syntax-table (15) fontified nil) 3246 3269 (fontified nil) 3269 3270 (nix-string-type 34 syntax-table (15) fontified nil) 3270 3275 (fontified nil) 3275 3276 (nix-string-type 34 syntax-table (15) fontified nil) 3276 3304 (fontified nil) 3304 3305 (nix-string-type 34 syntax-table (15) fontified nil) 3305 3309 (fontified nil) 3309 3310 (nix-string-type 34 syntax-table (15) fontified nil) 3310 3337 (fontified nil) 3337 3338 (nix-string-type 34 syntax-table (15) fontified nil) 3338 3342 (fontified nil) 3342 3343 (nix-string-type 34 syntax-table (15) fontified nil) 3343 3368 (fontified nil) 3368 3369 (nix-string-type 34 syntax-table (15) fontified nil) 3369 3372 (fontified nil) 3372 3373 (nix-string-type 34 syntax-table (15) fontified nil) 3373 3505 (fontified nil) 3505 3506 (nix-string-type 34 syntax-table (15) fontified nil) 3506 3518 (fontified nil) 3518 3519 (nix-string-type 34 syntax-table (15) fontified nil) 3519 3582 (fontified nil) 3582 3583 (nix-string-type 34 syntax-table (15) fontified nil) 3583 3597 (fontified nil) 3597 3598 (nix-string-type 34 syntax-table (15) fontified nil) 3598 3661 (fontified nil) 3661 3662 (nix-string-type 34 syntax-table (15) fontified nil) 3662 3672 (fontified nil) 3672 3673 (nix-string-type 34 syntax-table (15) fontified nil) 3673 3736 (fontified nil) 3736 3737 (nix-string-type 34 syntax-table (15) fontified nil) 3737 3749 (fontified nil) 3749 3750 (nix-string-type 34 syntax-table (15) fontified nil) 3750 3813 (fontified nil) 3813 3814 (nix-string-type 34 syntax-table (15) fontified nil) 3814 3831 (fontified nil) 3831 3832 (nix-string-type 34 syntax-table (15) fontified nil) 3832 3870 (fontified nil) 3870 3871 (nix-string-type 34 syntax-table (15) fontified nil) 3871 3890 (fontified nil) 3890 3891 (nix-string-type 34 syntax-table (15) fontified nil) 3891 3947 (fontified nil) 3947 3948 (nix-string-type 34 syntax-table (15) fontified nil) 3948 3952 (fontified nil) 3952 3953 (nix-string-type 34 syntax-table (15) fontified nil) 3953 3974 (fontified nil) 3974 3975 (nix-string-type 34 syntax-table (15) fontified nil) 3975 3989 (fontified nil) 3989 3990 (nix-string-type 34 syntax-table (15) fontified nil) 3990 4011 (fontified nil) 4011 4012 (nix-string-type 34 syntax-table (15) fontified nil) 4012 4029 (fontified nil) 4029 4030 (nix-string-type 34 syntax-table (15) fontified nil) 4030 4080 (fontified nil) 4080 4081 (nix-string-type 34 syntax-table (15) fontified nil) 4081 4094 (fontified nil) 4094 4095 (nix-string-type 34 syntax-table (15) fontified nil) 4095 4116 (fontified nil) 4116 4117 (nix-string-type 34 syntax-table (15) fontified nil) 4117 4129 (fontified nil) 4129 4130 (nix-string-type 34 syntax-table (15) fontified nil) 4130 4151 (fontified nil) 4151 4152 (nix-string-type 34 syntax-table (15) fontified nil) 4152 4161 (fontified nil) 4161 4162 (nix-string-type 34 syntax-table (15) fontified nil) 4162 4183 (fontified nil) 4183 4184 (nix-string-type 34 syntax-table (15) fontified nil) 4184 4194 (fontified nil) 4194 4195 (nix-string-type 34 syntax-table (15) fontified nil) 4195 4318 (fontified nil) 4318 4319 (nix-string-type 34 syntax-table (15) fontified nil) 4319 4333 (fontified nil) 4333 4334 (nix-string-type 34 syntax-table (15) fontified nil) 4334 4578 (fontified nil) 4578 4579 (nix-string-type 34 syntax-table (15) fontified nil) 4579 4580 (nix-string-type 34 syntax-table (15) fontified nil) 4580 4581 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 4581 4606 (fontified nil) 4606 4607 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 4607 4608 (nix-string-type 34 syntax-table (15) fontified nil) 4608 4613 (fontified nil) 4613 4614 (nix-string-type 34 syntax-table (15) fontified nil) 4614 4705 (fontified nil) 4705 4706 (nix-string-type 34 syntax-table (15) fontified nil) 4706 4707 (nix-string-type 34 syntax-table (15) fontified nil) 4707 4889 (fontified nil) 4889 4890 (nix-string-type 34 syntax-table (15) fontified nil) 4890 4891 (nix-string-type 34 syntax-table (15) fontified nil) 4891 4940 (fontified nil) 4940 4941 (nix-string-type 34 syntax-table (15) fontified nil) 4941 4942 (nix-string-type 34 syntax-table (15) fontified nil) 4942 5046 (fontified nil) 5046 5047 (nix-string-type 34 syntax-table (15) fontified nil) 5047 5055 (fontified nil) 5055 5056 (nix-string-type 34 syntax-table (15) fontified nil) 5056 5374 (fontified nil) 5374 5375 (nix-string-type 34 syntax-table (15) fontified nil) 5375 5379 (fontified nil) 5379 5380 (nix-string-type 34 syntax-table (15) fontified nil) 5380 5449 (fontified nil) 5449 5450 (nix-string-type 34 syntax-table (15) fontified nil) 5450 5455 (fontified nil) 5455 5456 (nix-string-type 34 syntax-table (15) fontified nil) 5456 5479 (fontified nil) 5479 5480 (nix-string-type 34 syntax-table (15) fontified nil) 5480 5485 (fontified nil) 5485 5486 (nix-string-type 34 syntax-table (15) fontified nil) 5486 5506 (fontified nil) 5506 5507 (nix-string-type 34 syntax-table (15) fontified nil) 5507 5511 (fontified nil) 5511 5512 (nix-string-type 34 syntax-table (15) fontified nil) 5512 5654 (fontified nil) 5654 5655 (nix-string-type 34 syntax-table (15) fontified nil) 5655 5664 (fontified nil) 5664 5665 (nix-string-type 34 syntax-table (15) fontified nil) 5665 5899 (fontified nil) 5899 5900 (nix-string-type 34 syntax-table (15) fontified nil) 5900 5909 (fontified nil) 5909 5910 (nix-string-type 34 syntax-table (15) fontified nil) 5910 6011 (fontified nil) 6011 6012 (nix-string-type 34 syntax-table (15) fontified nil) 6012 6016 (fontified nil) 6016 6017 (nix-string-type 34 syntax-table (15) fontified nil) 6017 6039 (fontified nil) 6039 6040 (nix-string-type 34 syntax-table (15) fontified nil) 6040 6054 (fontified nil) 6054 6055 (nix-string-type 34 syntax-table (15) fontified nil) 6055 6076 (fontified nil) 6076 6077 (nix-string-type 34 syntax-table (15) fontified nil) 6077 6084 (fontified nil) 6084 6085 (nix-string-type 34 syntax-table (15) fontified nil) 6085 6105 (fontified nil) 6105 6106 (nix-string-type 34 syntax-table (15) fontified nil) 6106 6107 (nix-string-type 34 syntax-table (15) fontified nil) 6107 6108 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 6108 6133 (fontified nil) 6133 6134 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 6134 6135 (nix-string-type 34 syntax-table (15) fontified nil) 6135 6141 (fontified nil) 6141 6142 (nix-string-type 34 syntax-table (15) fontified nil) 6142 6182 (fontified nil) 6182 6183 (nix-string-type 34 syntax-table (15) fontified nil) 6183 6192 (fontified nil) 6192 6193 (nix-string-type 34 syntax-table (15) fontified nil) 6193 6239 (fontified nil) 6239 6240 (nix-string-type 34 syntax-table (15) fontified nil) 6240 6244 (fontified nil) 6244 6245 (nix-string-type 34 syntax-table (15) fontified nil) 6245 6267 (fontified nil) 6267 6268 (nix-string-type 34 syntax-table (15) fontified nil) 6268 6274 (fontified nil) 6274 6275 (nix-string-type 34 syntax-table (15) fontified nil) 6275 6906 (fontified nil) 6906 6907 (nix-string-type 34 syntax-table (15) fontified nil) 6907 6936 (fontified nil) 6936 6937 (nix-string-type 34 syntax-table (15) fontified nil) 6937 6985 (fontified nil) 6985 6986 (nix-string-type 34 syntax-table (15) fontified nil) 6986 7002 (fontified nil) 7002 7003 (nix-string-type 34 syntax-table (15) fontified nil) 7003 7179 (fontified nil) 7179 7180 (nix-string-type 34 syntax-table (15) fontified nil) 7180 7204 (fontified nil) 7204 7205 (nix-string-type 34 syntax-table (15) fontified nil) 7205 7225 (fontified nil) 7225 7226 (nix-string-type 34 syntax-table (15) fontified nil) 7226 7227 (nix-string-type 34 syntax-table (15) fontified nil) 7227 7228 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 7228 7253 (fontified nil) 7253 7254 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 7254 7255 (nix-string-type 34 syntax-table (15) fontified nil) 7255 7263 (fontified nil) 7263 7264 (nix-string-type 34 syntax-table (15) fontified nil) 7264 7351 (fontified nil) 7351 7352 (nix-string-type 34 syntax-table (15) fontified nil) 7352 7359 (fontified nil) 7359 7360 (nix-string-type 34 syntax-table (15) fontified nil) 7360 7379 (fontified nil) 7379 7380 (nix-string-type 34 syntax-table (15) fontified nil) 7380 7384 (fontified nil) 7384 7385 (nix-string-type 34 syntax-table (15) fontified nil) 7385 7438 (fontified nil) 7438 7439 (nix-string-type 34 syntax-table (15) fontified nil) 7439 7440 (nix-string-type 34 syntax-table (15) fontified nil) 7440 7441 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 7441 7466 (fontified nil) 7466 7467 (nix-syntax-antiquote t nix-string-type 34 fontified nil) 7467 7468 (nix-string-type 34 syntax-table (15) fontified nil) 7468 7476 (fontified nil) 7476 7477 (nix-string-type 34 syntax-table (15) fontified nil) 7477 7496 (fontified nil) 7496 7497 (nix-string-type 34 syntax-table (15) fontified nil) 7497 7502 (fontified nil) 7502 7503 (nix-string-type 34 syntax-table (15) fontified nil) 7503 7527 (fontified nil) 7527 7528 (nix-string-type 34 syntax-table (15) fontified nil) 7528 7552 (fontified nil) 7552 7553 (nix-string-type 34 syntax-table (15) fontified nil) 7553 7798 (fontified nil) 7798 7799 (nix-string-type 34 syntax-table (15) fontified nil) 7799 7805 (fontified nil) 7805 7806 (nix-string-type 34 syntax-table (15) fontified nil) 7806 7862 (fontified nil) 7862 7863 (nix-string-type 34 syntax-table (15) fontified nil) 7863 7889 (fontified nil) 7889 7890 (nix-string-type 34 syntax-table (15) fontified nil) 7890 7929 (fontified nil) 7929 7930 (nix-string-type 34 syntax-table (15) fontified nil) 7930 7937 (fontified nil) 7937 7938 (nix-string-type 34 syntax-table (15) fontified nil) 7938 7940 (fontified nil) 7940 7944 (fontified t) 7944 7952 (face nix-attribute-face fontified t) 7952 7955 (fontified t) 7955 7956 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 7956 7963 (face font-lock-string-face fontified t) 7963 7964 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 7964 7970 (fontified t) 7970 7980 (face nix-attribute-face fontified t) 7980 7983 (fontified t) 7983 7984 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 7984 7991 (face font-lock-string-face fontified t) 7991 7992 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 7992 7998 (fontified t) 7998 8010 (face nix-attribute-face fontified t) 8010 8013 (fontified t) 8013 8014 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8014 8021 (face font-lock-string-face fontified t) 8021 8022 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8022 8028 (fontified t) 8028 8038 (face nix-attribute-face fontified t) 8038 8041 (fontified t) 8041 8042 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8042 8049 (face font-lock-string-face fontified t) 8049 8050 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8050 8056 (fontified t) 8056 8073 (face nix-attribute-face fontified t) 8073 8076 (fontified t) 8076 8077 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8077 8084 (face font-lock-string-face fontified t) 8084 8085 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8085 8091 (fontified t) 8091 8102 (face nix-attribute-face fontified t) 8102 8105 (fontified t) 8105 8106 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8106 8113 (face font-lock-string-face fontified t) 8113 8114 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8114 8120 (fontified t) 8120 8128 (face nix-attribute-face fontified t) 8128 8131 (fontified t) 8131 8132 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8132 8139 (face font-lock-string-face fontified t) 8139 8140 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8140 8146 (fontified t) 8146 8154 (face nix-attribute-face fontified t) 8154 8157 (fontified t) 8157 8158 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8158 8165 (face font-lock-string-face fontified t) 8165 8166 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8166 8172 (fontified t) 8172 8182 (face nix-attribute-face fontified t) 8182 8185 (fontified t) 8185 8186 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8186 8193 (face font-lock-string-face fontified t) 8193 8194 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8194 8200 (fontified t) 8200 8207 (face nix-attribute-face fontified t) 8207 8210 (fontified t) 8210 8211 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8211 8218 (face font-lock-string-face fontified t) 8218 8219 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8219 8225 (fontified t) 8225 8233 (face nix-attribute-face fontified t) 8233 8236 (fontified t) 8236 8237 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8237 8244 (face font-lock-string-face fontified t) 8244 8245 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8245 8251 (fontified t) 8251 8266 (face nix-attribute-face fontified t) 8266 8269 (fontified t) 8269 8270 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8270 8277 (face font-lock-string-face fontified t) 8277 8278 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8278 8284 (fontified t) 8284 8293 (face nix-attribute-face fontified t) 8293 8296 (fontified t) 8296 8297 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8297 8304 (face font-lock-string-face fontified t) 8304 8305 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8305 8315 (fontified t) 8315 8335 (face font-lock-comment-face fontified t) 8335 8338 (fontified t) 8338 8365 (face font-lock-comment-face fontified t) 8365 8377 (fontified t) 8377 8378 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8378 8392 (face font-lock-string-face fontified t) 8392 8393 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8393 8394 (fontified t) 8394 8398 (face nix-attribute-face fontified t) 8398 8401 (fontified t) 8401 8402 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8402 8403 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8403 8417 (fontified t) 8417 8418 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8418 8430 (face font-lock-string-face fontified t) 8430 8431 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8431 8432 (fontified t) 8432 8436 (face nix-attribute-face fontified t) 8436 8439 (fontified t) 8439 8440 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8440 8441 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 8441 8445 (fontified t)) . 1) (undo-tree-id0 . -8445) (undo-tree-id1 . -7940) (undo-tree-id2 . -8445) (undo-tree-id3 . -8445) (undo-tree-id4 . -8444) 8446 (t 26894 14376 719706 358000)) nil (26894 20032 441086 835000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 8480 . 8481) (nil fontified nil 1 . 8481) (1 . 8481)) nil (26894 20032 441063 588000) 0 nil])
+([nil nil ((8481 . 8482)) nil (26894 20032 441058 947000) 0 nil])
+([nil current ((#("  # Required packages
+  home.packages = with pkgs; [
+    noctalia-shell
+    xwayland-satellite
+    kitty
+    
+    # Fonts
+    (nerdfonts.override { fonts = [ \"JetBrainsMono\" ]; })
+    dejavu_fonts
+  ];
+" 0 2 (fontified t) 2 22 (face font-lock-comment-face fontified t) 22 24 (fontified t) 24 37 (face nix-attribute-face fontified t) 37 40 (fontified t) 40 44 (face nix-keyword-face fontified t) 44 72 (fontified t) 72 79 (fontified t) 79 114 (fontified t) 114 122 (face font-lock-comment-face fontified t) 122 148 (fontified t) 148 153 (face nix-attribute-face fontified t) 153 158 (fontified t) 158 159 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 159 172 (face font-lock-string-face fontified t) 172 173 (face font-lock-string-face nix-string-type 34 syntax-table (15) fontified t) 173 202 (fontified t)) . 8170) (undo-tree-id0 . -201) (undo-tree-id1 . -201) (undo-tree-id2 . -7) (undo-tree-id3 . -201) (undo-tree-id4 . -201) 8371 (t 26894 20032 441948 358000)) nil (26894 20118 624171 327000) 0 nil])
+nil

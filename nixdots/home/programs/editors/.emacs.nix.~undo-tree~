@@ -1,0 +1,39 @@
+(undo-tree-save-format-version . 1)
+"cb4753db9727ae14960b8665b101273b8bee1e14"
+[nil nil nil nil (26893 55739 4939 565000) 0 nil]
+([nil nil (("{
+  config,
+  lib,
+  pkgs,
+}:
+{
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+  };
+}
+" . 1) (undo-tree-id0 . -110) (undo-tree-id1 . -110) (undo-tree-id2 . -110) (undo-tree-id3 . -110) (undo-tree-id4 . -110) (undo-tree-id5 . -109) 111 (t 26893 55707 463708 656000)) nil (26893 55739 4975 556000) 0 nil])
+([nil nil ((1 . 111)) nil (26893 55754 892140 465000) 0 nil] [nil nil ((1 . 111)) (("{
+  config,
+  lib,
+  pkgs,
+}:
+{
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs-pgtk;
+  };
+}
+" . 1) (undo-tree-id6 . -110) (undo-tree-id7 . -110) (undo-tree-id8 . -110)) (26893 55739 4919 643000) 0 nil])
+([nil nil (("{" . 1) (undo-tree-id17 . -1) (undo-tree-id18 . -1)) nil (26893 55754 892139 910000) 0 nil])
+nil
+([nil nil (("  config,
+" . 2) (undo-tree-id15 . -9) (undo-tree-id16 . -10)) nil (26893 55754 892138 134000) 0 nil])
+([nil nil (("  lib,
+" . 2) (undo-tree-id13 . -6) (undo-tree-id14 . -7)) nil (26893 55754 892136 30000) 0 nil])
+([nil nil (("  pkgs,
+" . 2) (undo-tree-id11 . -7) (undo-tree-id12 . -8)) nil (26893 55754 892134 928000) 0 nil])
+([nil nil (("}:
+" . 2) (undo-tree-id9 . -2) (undo-tree-id10 . -3)) nil (26893 55754 892133 826000) 0 nil])
+([nil current ((1 . 29)) nil (26893 55754 892120 926000) 0 nil])
+nil
