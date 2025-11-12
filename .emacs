@@ -108,8 +108,8 @@
 
 (defun rc/global-eglot-ensure ()
   "Start Eglot automatically in all programming buffers that support it."
-  (when (and (derived-mode-p 'prog-mode) 
-             (not (eglot-managed-p)))    
+  (when (and (derived-mode-p 'prog-mode)
+             (not (eglot-managed-p)))
     (ignore-errors
       (eglot-ensure))))
 
@@ -169,21 +169,48 @@
 (add-hook 'nix-mode-hook 'rc/set-up-eglot)
 
 ;;; Projectile
-(rc/require 'projectile)
+(rc/require 'projectile 'counsel-projectile)
 (require 'projectile)
+(require 'counsel-projectile)
 (projectile-mode +1)
+(counsel-projectile-mode 1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;;; Ivy/Counsel/Swiper - fzf-like fuzzy finding
+(rc/require 'ivy 'counsel 'swiper)
+(require 'ivy)
+(require 'counsel)
+(require 'swiper)
+
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(setq ivy-height 15)
+(setq ivy-count-format "(%d/%d) ")
+(setq ivy-re-builders-alist
+      '((t . ivy--regex-fuzzy)))  ;; Enable fuzzy matching everywhere
+
+;; counsel-fzf uses actual fzf binary
+(setq counsel-fzf-cmd "fzf -f \"%s\"")
+
+;; Use rg for faster searching if available
+(when (executable-find "rg")
+  (setq counsel-rg-base-command "rg -S --no-heading --line-number --color never %s"))
 
 ;;; helm
 (rc/require 'helm 'helm-ls-git)
 
 (setq helm-ff-transformer-show-only-basename nil)
-
 (global-set-key (kbd "C-c h t") 'helm-cmd-t)
 (global-set-key (kbd "C-c h g l") 'helm-ls-git-ls)
 (global-set-key (kbd "C-c h f") 'helm-find)
 (global-set-key (kbd "C-c h a") 'helm-org-agenda-files-headings)
 (global-set-key (kbd "C-c h r") 'helm-recentf)
+
+;;;Which Key
+(rc/require 'which-key)
+(require 'which-key)
+(which-key-mode 1)
 
 ;;; eldoc mode
 (defun rc/turn-on-eldoc-mode ()
@@ -191,6 +218,21 @@
   (eldoc-mode 1))
 
 (add-hook 'emacs-lisp-mode-hook 'rc/turn-on-eldoc-mode)
+
+;;; Keybinds
+(global-set-key (kbd "C-c e") 'eshell)
+
+;; Evil leader key bindings with Counsel (fzf-like fuzzy finding)
+(with-eval-after-load 'evil
+  (evil-define-key 'normal 'global (kbd "SPC f f") 'counsel-file-jump)
+  (evil-define-key 'normal 'global (kbd "SPC f p") 'counsel-projectile-find-file)
+  (evil-define-key 'normal 'global (kbd "SPC f g") 'counsel-git)
+  (evil-define-key 'normal 'global (kbd "SPC f r") 'counsel-recentf)
+  (evil-define-key 'normal 'global (kbd "SPC f d") 'counsel-find-file)
+  (evil-define-key 'normal 'global (kbd "SPC s s") 'swiper)
+  (evil-define-key 'normal 'global (kbd "SPC s g") 'counsel-rg)
+  (evil-define-key 'normal 'global (kbd "SPC s p") 'counsel-projectile-rg)
+  (evil-define-key 'normal 'global (kbd "SPC b b") 'counsel-switch-buffer))
 
 ;;; vterm
 (rc/require 'vterm)
@@ -202,5 +244,14 @@
 (setq browse-url-browser-function 'browse-url-firefox)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
