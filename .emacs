@@ -27,15 +27,9 @@
 ;;; Font for emacs
 (add-to-list 'default-frame-alist `(font . "IosevkaNerdFont-18"))
 
-;;; Completion for M-x
-(rc/require 'smex 'ido-completing-read+)
-(require 'ido-completing-read+)
-
-(ido-mode 1)
-(ido-everywhere 1)
-(ido-ubiquitous-mode 1)
-
-(global-set-key (kbd "M-x") 'smex)
+;;; Completion for M-x with Counsel
+;; Since we're using Ivy/Counsel, we can use counsel-M-x instead of smex
+(global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;; rust-mode
@@ -244,14 +238,5 @@
 (setq browse-url-browser-function 'browse-url-firefox)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
  '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(custom-set-faces)
