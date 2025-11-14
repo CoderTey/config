@@ -24,12 +24,19 @@
 ;;; Theme for emacs
 (rc/require-theme 'nord)
 
+
 ;;; Font for emacs
 (add-to-list 'default-frame-alist `(font . "IosevkaNerdFont-18"))
 
-;;; Completion for M-x with Counsel
-;; Since we're using Ivy/Counsel, we can use counsel-M-x instead of smex
-(global-set-key (kbd "M-x") 'counsel-M-x)
+;;; Completion for M-x
+(rc/require 'smex 'ido-completing-read+)
+(require 'ido-completing-read+)
+
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;; rust-mode
@@ -215,6 +222,7 @@
 
 ;;; Keybinds
 (global-set-key (kbd "C-c e") 'eshell)
+(evil-define-key 'normal 'global (kbd "SPC c d") 'dired)
 
 ;; Evil leader key bindings with Counsel (fzf-like fuzzy finding)
 (with-eval-after-load 'evil
@@ -238,5 +246,23 @@
 (setq browse-url-browser-function 'browse-url-firefox)
 
 (custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("56044c5a9cc45b6ec45c0eb28df100d3f0a576f18eef33ff8ff5d32bac2d9700"
+     "0c83e0b50946e39e237769ad368a08f2cd1c854ccbcd1a01d39fdce4d6f86478"
+     "42a6583a45e0f413e3197907aa5acca3293ef33b4d3b388f54fa44435a494739"
+     "d481904809c509641a1a1f1b1eb80b94c58c210145effc2631c1a7f2e4a2fdf4"
+     "87fa3605a6501f9b90d337ed4d832213155e3a2e36a512984f83e847102a42f4"
+     "3613617b9953c22fe46ef2b593a2e5bc79ef3cc88770602e7e569bbd71de113b"
+     "5a4cdc4365122d1a17a7ad93b6e3370ffe95db87ed17a38a94713f6ffe0d8ceb"
+     default))
  '(package-selected-packages nil))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
