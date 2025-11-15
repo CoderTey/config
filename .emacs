@@ -234,7 +234,6 @@
   (evil-define-key 'normal 'global (kbd "SPC s s") 'swiper)
   (evil-define-key 'normal 'global (kbd "SPC s g") 'counsel-rg)
   (evil-define-key 'normal 'global (kbd "SPC s p") 'counsel-projectile-rg)
-  (evil-define-key 'normal 'global (kbd "SPC b b") 'counsel-switch-buffer))
 
 ;;; vterm
 (rc/require 'vterm)
