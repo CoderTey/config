@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   programs.zsh = {
     enable = true;
@@ -9,6 +8,10 @@
 
     oh-my-zsh = {
       enable = true;
+
+      # Используем встроенную тему robbyrussell
+      theme = "robbyrussell";
+
       plugins = [
         "git"
         "sudo"
@@ -17,22 +20,19 @@
     };
 
     initExtra = ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
+      # PATH для локальных бинарников
+      export PATH="$HOME/.local/bin:$PATH"
 
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+      # Переменная для командного терминала
+      export TS_SESSION_COMMANDS="nix run ~/nixdots"
 
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      # Алиасы
+      alias ls="eza --icons"
+      alias ll="eza -la --icons"
+      alias cat="bat"
+      alias nvf="nix run ~/nixdots"
+      alias nrs="sudo nixos-rebuild switch --flake ~/nixdots#tey"
     '';
-
-    shellAliases = {
-      ls = "eza --icons";
-      ll = "eza -la --icons";
-      cat = "bat";
-      nvf = "nix run ~/nixdots";
-      nrs = "sudo nixos-rebuild switch --flake ~/nixdots#tey";
-    };
   };
 
   programs.zoxide = {
@@ -41,6 +41,8 @@
   };
 
   home.packages = with pkgs; [
-    zsh-powerlevel10k
+    eza
+    bat
+    zoxide
   ];
 }

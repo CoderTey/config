@@ -50,8 +50,9 @@
       wget
       unzip
       tree
+      zen-browser
       fastfetch
-      bat
+      batd
       fzf
       ripgrep
       zoxide
@@ -63,6 +64,8 @@
       libxkbcommon
       wayland-protocols
       sway
+      libtool
+      libvterm
       dwl
       hyprland
       hyprlock
@@ -99,7 +102,6 @@
       nwg-look
       zoom-us
       vesktop
-      discord
 
       # Editors / Terminals / Multiplexers
       neovim

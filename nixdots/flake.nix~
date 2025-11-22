@@ -5,7 +5,7 @@
     nvf.url = "github:notashelf/nvf";
 
     oxwm = {
-      url = "github:tonybanters/oxwm/";
+      url = "github:tonybanters/oxwm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

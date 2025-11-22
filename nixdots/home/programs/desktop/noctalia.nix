@@ -44,17 +44,21 @@
               id = "Workspace";
               labelMode = "name";
             }
+            {
+              colorizeIcons = false;
+              groupingMode = "class";
+              id = "TaskbarGrouped";
+              maxWidth = 145;
+              onlySameOutput = false;
+              scrollingMode = "hover";
+              showIcon = true;
+              showLabel = false;
+              showWorkspaceNumbers = false;
+              showWorkspaceNumbersWhenOccupied = false;
+              useFixedWidth = false;
+            }
           ];
           left = [
-            {
-              id = "SystemMonitor";
-              showCpuTemp = true;
-              showCpuUsage = true;
-              showDiskUsage = false;
-              showMemoryAsPercent = false;
-              showMemoryUsage = true;
-              showNetworkStats = false;
-            }
             {
               colorizeIcons = false;
               hideMode = "hidden";
@@ -76,12 +80,7 @@
             }
           ];
           right = [
-            { id = "ScreenRecorder"; }
-            {
-              blacklist = [ ];
-              colorizeIcons = false;
-              id = "Tray";
-            }
+            {  }
             {
               hideWhenZero = true;
               id = "NotificationHistory";
@@ -95,10 +94,6 @@
             {
               displayMode = "onhover";
               id = "Volume";
-            }
-            {
-              displayMode = "onhover";
-              id = "Brightness";
             }
             {
               customFont = "";

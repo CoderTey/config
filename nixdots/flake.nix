@@ -5,7 +5,12 @@
     nvf.url = "github:notashelf/nvf";
 
     oxwm = {
-      url = "github:tonybanters/oxwm/lua-config-test";
+      url = "github:tonybanters/oxwm/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,7 +27,7 @@
     };
 
     quickshell = {
-      url = "github:outfoxxed/quickshell";
+      url = "github:outfoxxed/quickshell/0.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

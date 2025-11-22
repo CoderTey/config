@@ -57,8 +57,9 @@
       zoxide
       neohtop
       quickshell
-
+      inputs.zen-browser.packages."${system}".default
       # Wayland / GUI
+
       wlroots
       libxkbcommon
       wayland-protocols
@@ -101,7 +102,6 @@
       nwg-look
       zoom-us
       vesktop
-      discord
 
       # Editors / Terminals / Multiplexers
       neovim
@@ -117,7 +117,6 @@
       # Multimedia
       spotify
       firefox
-      obsidian
       libreoffice
       telegram-desktop
       pavucontrol

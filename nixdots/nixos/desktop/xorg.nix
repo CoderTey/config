@@ -16,5 +16,5 @@
     '';
   };
 
-  services.displayManager.sddm.enable = true;
+  services.displayManager.ly.enable = true;
 }
