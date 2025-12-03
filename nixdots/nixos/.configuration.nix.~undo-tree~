@@ -1,0 +1,7 @@
+(undo-tree-save-format-version . 1)
+"9c0a55dee30cbc57558e6d210d99f190a7256d55"
+[nil nil nil nil (26904 34513 571539 581000) 0 nil]
+([nil nil ((#("    ./desktop/kde.nix
+" 0 4 (face whitespace-space fontified t) 4 21 (face nix-constant-face fontified t) 21 22 (fontified t)) . 483) (undo-tree-id0 . -22) (undo-tree-id1 . -21) (t 26888 55544 251301 55000)) nil (26904 34513 571538 553000) 0 nil])
+([nil current ((#("  " 0 2 (face whitespace-trailing fontified t)) . 507) (#("  " 0 2 (face whitespace-trailing fontified t)) . 473) (#("    " 0 4 (face whitespace-trailing fontified t)) . 309) (#("    " 0 4 (face whitespace-trailing fontified t)) . 280) (#("    " 0 4 (face whitespace-trailing fontified t)) . 155) (#("    " 0 4 (face whitespace-trailing fontified t)) . 132)) nil (26904 34513 571515 286000) 0 nil])
+nil

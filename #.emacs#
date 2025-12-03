@@ -25,7 +25,7 @@
       doom-themes-enable-italic t)
 
 (custom-set-faces
- '(default ((t (:background "#3B4252" :foreground "#ECEFF4"))))  ; Более яркий фон
+ '(default ((t (:background "#3B4252" :foreground "#ECEFF4"))))
  '(font-lock-keyword-face ((t (:foreground "#81A1C1" :weight bold))))
  '(font-lock-function-name-face ((t (:foreground "#88C0D0" :weight bold))))
  '(font-lock-variable-name-face ((t (:foreground "#D08770" :weight bold))))
@@ -43,25 +43,6 @@
  '(mode-line ((t (:background "#2E3440" :foreground "#D8DEE9" :weight normal))))  ; Приглушённая mode-line
  '(mode-line-inactive ((t (:background "#242933" :foreground "#4C566A")))))  ; Ещё более тусклая неактивная
 
-
-
-(custom-set-faces
- '(mode-line ((t (:background "#2E3440" :foreground "#D8DEE9" :weight normal :box nil))))
- '(mode-line-inactive ((t (:background "#242933" :foreground "#4C566A" :box nil)))))
-
-(setq-default mode-line-format
-  '("%e"
-    mode-line-buffer-identification
-    "   "
-    "(" mode-line-position ") "
-    "[%m] "
-    vc-mode
-    "   "
-    mode-line-misc-info
-    mode-line-end-spaces))
-
-
-
 (package-initialize)
 (setq package-install-upgrade-built-in t)
 (add-to-list 'default-frame-alist `(font . "IosevkaNerdFont-18"))
@@ -72,7 +53,7 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Multiple Cursors
-(rc/require 'multiple-cursors)
+(Rc/require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->")         'mc/mark-next-like-this)
 (global-set-key (kbd "C-<")         'mc/mark-previous-like-this)

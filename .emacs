@@ -25,7 +25,7 @@
       doom-themes-enable-italic t)
 
 (custom-set-faces
- '(default ((t (:background "#3B4252" :foreground "#ECEFF4"))))  ; Более яркий фон
+ '(default ((t (:background "#3B4252" :foreground "#ECEFF4"))))
  '(font-lock-keyword-face ((t (:foreground "#81A1C1" :weight bold))))
  '(font-lock-function-name-face ((t (:foreground "#88C0D0" :weight bold))))
  '(font-lock-variable-name-face ((t (:foreground "#D08770" :weight bold))))
