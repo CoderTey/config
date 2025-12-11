@@ -16,8 +16,11 @@
     ./programs/desktop/noctalia.nix
 
     ./programs/editors/emacs.nix
-  ];
 
+    ./programs/personaluse/spotify.nix
+  ];
+     
+ 
   home = {
     username = "tey";
     homeDirectory = "/home/tey";
@@ -30,26 +33,31 @@
       # Toolchain
       gcc
       binutils
-      zig
       rustup
+      gdb
       # Основные утилиты
       coreutils
       gnumake
-      steam
-      steam-run
       eza
       git
-      nil
+      lua5_1
       qemu
+      steam
+      steam-run
+      emacs.pkgs.vterm
+      vim
       virt-manager
       fd
       xmobar
+      nixd
       btop
       zed-editor
       curl
+      glib
       wget
       unzip
       tree
+      osu-lazer-bin
       fastfetch
       bat
       fzf
@@ -115,7 +123,6 @@
       dmenu
 
       # Multimedia
-      spotify
       firefox
       libreoffice
       telegram-desktop
@@ -146,6 +153,9 @@
       fishPlugins.hydro
       fishPlugins.grc
       grc
+      zig
+      zvm
+      zls
 
       # Extras
       neofetch

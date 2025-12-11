@@ -7,8 +7,7 @@
 
     theme = {
       enable = true;
-      name = "rose-pine";
-      style = "main";
+      name = "nord";
       transparent = true;
     };
     telescope.enable = true;
@@ -18,38 +17,98 @@
     autopairs.nvim-autopairs.enable = true;
     utility.undotree.enable = true;
     formatter.conform-nvim.enable = true;
-    formatter.conform-nvim.setupOpts.format_after_save.enable = true;
     ui.nvim-highlight-colors.enable = true;
     visuals.nvim-web-devicons.enable = true;
     utility.motion.leap.enable = true;
     visuals.indent-blankline.enable = true;
 
     keymaps = [
+      # Telescope mappings
+      {
+        key = "<leader>pf";
+        mode = "n";
+        action = ":lua require('telescope.builtin').find_files()<CR>";
+        desc = "Find files";
+      }
+      {
+        key = "<C-p>";
+        mode = "n";
+        action = ":lua require('telescope.builtin').git_files()<CR>";
+        desc = "Git files";
+      }
+      {
+        key = "<leader>pws";
+        mode = "n";
+        action = ":lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<CR>";
+        desc = "Grep word under cursor";
+      }
+      {
+        key = "<leader>pWs";
+        mode = "n";
+        action = ":lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cWORD>') })<CR>";
+        desc = "Grep WORD under cursor";
+      }
+      {
+        key = "<leader>ps";
+        mode = "n";
+        action = ":lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep > ') })<CR>";
+        desc = "Grep search";
+      }
+      {
+        key = "<leader>vh";
+        mode = "n";
+        action = ":lua require('telescope.builtin').help_tags()<CR>";
+        desc = "Help tags";
+      }
+
       # Harpoon mappings
       {
         key = "<leader>a";
         mode = "n";
         action = ":lua require('harpoon'):list():add()<CR>";
+        desc = "Harpoon add file";
       }
       {
         key = "<C-e>";
         mode = "n";
         action = ":lua require('harpoon').ui:toggle_quick_menu(require('harpoon'):list())<CR>";
+        desc = "Harpoon quick menu";
       }
       {
-        key = "<leader>fl";
+        key = "<C-h>";
         mode = "n";
-        action = ":lua toggle_telescope(require('harpoon'):list())<CR>";
+        action = ":lua require('harpoon'):list():select(1)<CR>";
+        desc = "Harpoon file 1";
       }
       {
-        key = "<C-p>";
+        key = "<C-t>";
         mode = "n";
-        action = ":lua require('harpoon'):list():prev()<CR>";
+        action = ":lua require('harpoon'):list():select(2)<CR>";
+        desc = "Harpoon file 2";
       }
       {
         key = "<C-n>";
         mode = "n";
+        action = ":lua require('harpoon'):list():select(3)<CR>";
+        desc = "Harpoon file 3";
+      }
+      {
+        key = "<C-s>";
+        mode = "n";
+        action = ":lua require('harpoon'):list():select(4)<CR>";
+        desc = "Harpoon file 4";
+      }
+      {
+        key = "<C-S-P>";
+        mode = "n";
+        action = ":lua require('harpoon'):list():prev()<CR>";
+        desc = "Harpoon prev";
+      }
+      {
+        key = "<C-S-N>";
+        mode = "n";
         action = ":lua require('harpoon'):list():next()<CR>";
+        desc = "Harpoon next";
       }
 
       # Basic navigation and editing
@@ -325,6 +384,8 @@
       rust.enable = true;
       go.enable = true;
       clang.enable = true;
+      zig.enable = true;
+      haskell.enable = true;
     };
   };
 }

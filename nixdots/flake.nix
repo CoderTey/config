@@ -1,3 +1,4 @@
+
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -7,6 +8,11 @@
     oxwm = {
       url = "github:tonybanters/oxwm/";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Используем Gerg-L, как указано вами
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
     };
 
     zen-browser = {
@@ -45,6 +51,7 @@
       nixpkgs,
       home-manager,
       mango,
+      spicetify-nix, # <--- Объявлен здесь
       nvf,
       oxwm,
       noctalia,
@@ -65,7 +72,8 @@
         # NixOS configuration
         nixosConfigurations.tey = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          # ИСПРАВЛЕНИЕ: Теперь spicetify-nix передается
+          specialArgs = { inherit inputs spicetify-nix; }; 
           modules = [
             # System configuration
             ./nixos/configuration.nix
@@ -75,13 +83,12 @@
             home-manager.nixosModules.home-manager
             mango.nixosModules.mango
             oxwm.nixosModules.default
-
-            # Home Manager configuration
+            
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
-
+              home-manager.extraSpecialArgs = { inherit inputs spicetify-nix; }; # <--- Добавлено для Home Manager
+              
               home-manager.users.tey = {
                 imports = [
                   # Main home configuration
@@ -89,6 +96,7 @@
 
                   # Home Manager modules
                   mango.hmModules.mango
+                  spicetify-nix.homeManagerModules.spicetify
                   inputs.noctalia.homeModules.default
                 ];
               };
